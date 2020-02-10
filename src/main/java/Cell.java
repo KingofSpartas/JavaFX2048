@@ -6,21 +6,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
-import lombok.Getter;
-import lombok.Setter;
 
 class Cell extends StackPane {
-	@Getter
 	private static int boardHeight = 80;
-	@Getter
 	private static int boardWidth = 80;
-	@Getter
-	@Setter
 	private boolean merge;
 	private Label label = new Label();
 	private Rectangle rectangle;
-	@Getter
-	@Setter
 	private int num;
 
 	Cell(boolean isBackground) {
@@ -47,6 +39,14 @@ class Cell extends StackPane {
 		getChildren().add(label);
 	}
 
+	public static int getBoardHeight() {
+		return Cell.boardHeight;
+	}
+
+	public static int getBoardWidth() {
+		return Cell.boardWidth;
+	}
+
 	void refresh() {
 		if (this.num == 0) {
 			setOpacity(0);
@@ -59,5 +59,21 @@ class Cell extends StackPane {
 		}
 		merge = false;
 		rectangle.setFill(GraphicsEngine.getColor(this.num));
+	}
+
+	public boolean isMerge() {
+		return this.merge;
+	}
+
+	public void setMerge(boolean merge) {
+		this.merge = merge;
+	}
+
+	public int getNum() {
+		return this.num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
 	}
 }
